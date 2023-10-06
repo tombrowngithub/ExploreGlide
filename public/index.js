@@ -21,7 +21,10 @@ const db = getFirestore(app); // Initialize Firestore
 
 // Define a function to format the date as "01 Jan 2045"
 function formatDate(date) {
-    const options = { year: 'numeric', month: 'short', day: '2-digit' };
+    const options = {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit' };
     return date.toLocaleDateString(undefined, options);
 }
 

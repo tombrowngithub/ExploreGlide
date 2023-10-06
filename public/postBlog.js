@@ -51,20 +51,20 @@ form.addEventListener('submit', async (e) => {
     try {
         // Upload the image to Firebase Storage
         const imageRef = ref(storage, 'images/' + imageFile.name); // Define the storage path for images
-        const uploadTask = uploadBytesResumable(imageRef, imageFile);
+        const uploadTask = uploadBytesResumable(imageRef, imageFile)
         await uploadTask;
         // Get the download URL of the uploaded image
         // Add the image URL to the post data
-        post.imageUrl = await getDownloadURL(imageRef);
+        post.imageUrl = await getDownloadURL(imageRef)
 
         // Add the post document to the Firestore collection
         await setDoc(doc(postsCollection), post); // Specify the collection reference
 
         // Reset the form
         //form.reset();
-        alert('Post created successfully!');
+        alert('Post created successfully!')
         //location.href = "/"
     } catch (error) {
-        console.error('Error creating post:', error);
+        console.error('Error creating post:', error)
     }
 });
