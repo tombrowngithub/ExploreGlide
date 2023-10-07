@@ -14,6 +14,13 @@ app.get('/post', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'postBlog.html'))
 })
 
+app.get('/category/travel', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'category', 'travel.html'))
+})
+app.get('/category/hotels', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'category', 'hotels.html'))
+})
+
 //The route to get our blog post based on the ID of clicked post
 app.get("/:blog", (req, res) => {
     res.sendFile(path.join(__dirname, 'public', "blog.html"));

@@ -62,6 +62,7 @@ form.addEventListener('submit', async (e) => {
 
         // Reset the form
         //form.reset();
+        console.log(article)
         alert('Post created successfully!')
         //location.href = "/"
     } catch (error) {

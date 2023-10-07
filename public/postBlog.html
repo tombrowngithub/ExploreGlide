@@ -23,7 +23,8 @@
 
     <!-- Template Stylesheet -->
     <link href="assets/css/style.css" rel="stylesheet">
-</head>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.0/classic/ckeditor.js"></script></head>
 <body>
 <div class="container bg-light shadow-sm mx-auto form-container">
     <form class="mt-1" id="form-post">
@@ -57,12 +58,10 @@
         </div>
 
         <div class="form-floating my-3">
-            <label class="form-label" for="article">Write blog here</label>
             <textarea
-                    style="height: 20rem"
-                    class="form-control"
                     id="article"
                     required
+                    name="ckeditor"
             >
             </textarea>
         </div>
@@ -73,6 +72,13 @@
     </form>
 </div>
 
+<script>
+    ClassicEditor
+        .create(document.querySelector('#article'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 
 <script type="module" src="postBlog.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

@@ -32,6 +32,9 @@
     transition: 0.5s;
     z-index: 99;
 }
+.article{
+    margin-top: -1.3rem!important;
+}
 
 .back-to-top:hover {
     background: var(--bs-dark);

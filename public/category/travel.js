@@ -1,10 +1,11 @@
-// Import Firebase modules
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
 import {
     getFirestore,
     collection,
+    query,
+    where,
     getDocs,
-} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"; // Import Firestore modules
+} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDc3SAP5mWBWR_r883cGqW92LSXYSqFRaM",
@@ -19,23 +20,24 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); // Initialize Firestore
 
-// Define a function to format the date as "01 Jan 2045"
-function formatDate(date) {
+function formatDate(dateTwo) {
     const options = {
         year: 'numeric',
         month: 'short',
-        day: '2-digit' };
-    return date.toLocaleDateString(undefined, options);
+        day: '2-digit'
+    };
+    return dateTwo.toLocaleDateString(undefined, options);
 }
-function renderPost(posts) {
-    const post = posts.data()
-    const postsContainer = document.getElementById("posts-container");
+
+function renderPost(blog_posts) {
+    const post = blog_posts.data()
+    const postsContainers = document.getElementById("posts-container");
     const date = post.timestamp.toDate();
 
     // Format the date as a string
-    const Date =  formatDate(date); // Customize the format as needed
+    const Date = formatDate(date); // Customize the format as needed
     const time = date.toLocaleTimeString()
-    postsContainer.innerHTML = `
+    postsContainers.innerHTML = `
           <div class="col-lg-6 col-xl-4">
                 <div class="blog-item wow fadeIn" data-wow-delay="0.1s">
                     <div class="blog-img position-relative overflow-hidden">
@@ -61,30 +63,32 @@ function renderPost(posts) {
                         </div>
                         <a href="" class="d-inline-block h5 mb-0">${post.title}</a>
                         <p class="mb-4 article">${post.article.substring(0, 170)}...</p>
-                        <a href="/${posts.id}" class="btn btn-primary px-3">More Details</a>
+                        <a href="/${blog_posts.id}" class="btn btn-primary px-3">More Details</a>
                     </div>
                 </div>
             </div>
-    ${postsContainer.innerHTML}
+    ${postsContainers.innerHTML}
     `
 
 }
 
+// Function to fetch and display posts with a specific category
+async function fetchAndDisplayTravelPosts() {
+    try {
+        // Query Firestore for posts with the category "travel"
+        const q = query(collection(db, 'posts'), where('category', '==', 'Travel'));
 
-
-
-// Function to fetch and render posts from Firestore
-async function fetchAndRenderPosts() {
-    const postsCollection = collection(db, "posts"); // Change "posts" to your Firestore collection name
-    const querySnapshot = await getDocs(postsCollection);
-
-    querySnapshot.forEach((doc) => {
-        renderPost(doc);
-    });
+        // Execute the query
+        const querySnapshot = await getDocs(q);
+        // Iterate through the query results and display them
+        querySnapshot.forEach((doc) => {
+           renderPost(doc)
+        });
+    } catch (error) {
+        console.error('Error fetching and displaying travel posts:', error);
+    }
 }
 
-// Add an event listener to call fetchAndRenderPosts when the page loads
-window.addEventListener("load", () => {
-    const explore = document.getElementById('exploreglide')
-    fetchAndRenderPosts();
-});
+// Call the function to fetch and display travel posts when needed
+fetchAndDisplayTravelPosts()
+
