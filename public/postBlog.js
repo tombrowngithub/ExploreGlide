@@ -32,7 +32,12 @@ const storage = getStorage(app); // Initialize Firebase Storage
 const form = document.querySelector('#form-post');
 form.addEventListener('submit', async (e) => {
     e.preventDefault(); // Prevent the default form submission
-
+    const spinner = document.getElementById('loading')
+    const postBtn = document.getElementById('btn-post')
+    spinner.style.setProperty('display', 'block', 'important')
+    spinner.style.setProperty('display', 'flex', 'important')
+    spinner.style.setProperty('justify-content', 'center', 'important')
+    postBtn.style.setProperty('display', 'none', 'important')
     // Get form inputs
     const category = document.getElementById('category').value;
     const imageFile = document.getElementById('image').files[0]; // Assuming only one image is selected
@@ -62,7 +67,9 @@ form.addEventListener('submit', async (e) => {
 
         // Reset the form
         form.reset();
-        alert('Post created successfully!')
+        spinner.style.setProperty('display', 'none', 'important')
+        postBtn.style.setProperty('display', 'block', 'important')
+        //alert('Post created successfully!')
         location.href = "/"
     } catch (error) {
         console.error('Error creating post:', error)

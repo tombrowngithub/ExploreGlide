@@ -24,8 +24,10 @@
     <!-- Template Stylesheet -->
     <link href="assets/css/style.css" rel="stylesheet">
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.0/classic/ckeditor.js"></script></head>
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.0/classic/ckeditor.js"></script>
+</head>
 <body>
+
 <div class="container bg-light shadow-sm mx-auto form-container">
     <form class="mt-1" id="form-post">
         <div class="form-group mb-3">
@@ -65,8 +67,10 @@
             >
             </textarea>
         </div>
-
-        <div class="form-floating">
+        <div class=" d-flex justify-content-center d-none" id="loading">
+            <img src="Spinner.gif" alt="loading" style="width: 70px">
+        </div>
+        <div class="form-floating" id="btn-post">
             <button type="submit" class="btn btn-info mb-5 text-white w-100">Post!</button>
         </div>
     </form>

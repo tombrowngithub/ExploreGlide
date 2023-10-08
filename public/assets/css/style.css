@@ -32,8 +32,13 @@
     transition: 0.5s;
     z-index: 99;
 }
-.article{
-    margin-top: -1.3rem!important;
+
+.article {
+    margin-top: -1.3rem !important;
+}
+
+.aboutUs {
+    font-size: 1.095em;
 }
 
 .back-to-top:hover {
@@ -231,6 +236,7 @@ h4, h5, h6, .h4, .h5, .h6 {
     .form-container {
         width: 100%;
     }
+
     .blog-text {
         font-size: 1.15em;
     }
@@ -504,3 +510,7 @@ h4, h5, h6, .h4, .h5, .h6 {
 }
 
 /*** Footer End ***/
+
+/** Spinner loader start**/
+
+
