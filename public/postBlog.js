@@ -61,10 +61,9 @@ form.addEventListener('submit', async (e) => {
         await setDoc(doc(postsCollection), post); // Specify the collection reference
 
         // Reset the form
-        //form.reset();
-        console.log(article)
+        form.reset();
         alert('Post created successfully!')
-        //location.href = "/"
+        location.href = "/"
     } catch (error) {
         console.error('Error creating post:', error)
     }

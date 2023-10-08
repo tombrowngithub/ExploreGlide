@@ -21,6 +21,28 @@ app.get('/category/hotels', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'category', 'hotels.html'))
 })
 
+app.get('/category/education', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'category', 'education.html'))
+})
+
+app.get('/category/lifestyle', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'category', 'lifestyle.html'))
+})
+
+app.get('/category/tours', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'category', 'tours.html'))
+})
+app.get('/category/adventure', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'category', 'adventure.html'))
+})
+
+app.get('/category/flight', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'category', 'flight.html'))
+})
+
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'about.html'))
+})
 //The route to get our blog post based on the ID of clicked post
 app.get("/:blog", (req, res) => {
     res.sendFile(path.join(__dirname, 'public', "blog.html"));
