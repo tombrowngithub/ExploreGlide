@@ -4,6 +4,7 @@ import {
     collection,
     query,
     where,
+    orderBy,
     getDocs,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
@@ -79,7 +80,7 @@ async function fetchAndDisplayTravelPosts() {
         const q = query(collection(db, 'posts'), where('category', '==', 'Education'));
 
         // Execute the query
-        const querySnapshot = await getDocs(q);
+        const querySnapshot = await getDocs(q, orderBy("timestamp", "desc"))
         // Iterate through the query results and display them
         querySnapshot.forEach((doc) => {
             renderPost(doc)

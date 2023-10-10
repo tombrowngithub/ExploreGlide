@@ -4,6 +4,7 @@ import {
     collection,
     query,
     where,
+    orderBy,
     getDocs,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
@@ -76,13 +77,11 @@ function renderPost(blog_posts) {
 async function fetchAndDisplayTravelPosts() {
     try {
         // Query Firestore for posts with the category "travel"
-        const q = query(collection(db, 'posts'), where('category', '==', 'Travel'));
+        const q = query(collection(db, 'posts'), where('category', '==', 'Adventure'));
 
-        // Execute the query
-        const querySnapshot = await getDocs(q);
-        // Iterate through the query results and display them
+        const querySnapshot = await getDocs(q, orderBy("timestamp", "desc"))
         querySnapshot.forEach((doc) => {
-           renderPost(doc)
+            renderPost(doc)
         });
     } catch (error) {
         console.error('Error fetching and displaying travel posts:', error);

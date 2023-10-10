@@ -14,30 +14,30 @@ app.get('/post', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'postBlog.html'))
 })
 
-app.get('/category/travel', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'category', 'travel.html'))
+app.get('/travel', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'travel.html'))
 })
-app.get('/category/hotels', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'category', 'hotels.html'))
-})
-
-app.get('/category/education', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'category', 'education.html'))
+app.get('/hotels', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'hotels.html'))
 })
 
-app.get('/category/lifestyle', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'category', 'lifestyle.html'))
+app.get('/education', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'education.html'))
 })
 
-app.get('/category/tours', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'category', 'tours.html'))
-})
-app.get('/category/adventure', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'category', 'adventure.html'))
+app.get('/lifestyle', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'lifestyle.html'))
 })
 
-app.get('/category/flight', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'category', 'flight.html'))
+app.get('/tours', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'tours.html'))
+})
+app.get('/adventure', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'adventure.html'))
+})
+
+app.get('/flight', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'flight.html'))
 })
 
 app.get('/about', (req, res) => {
