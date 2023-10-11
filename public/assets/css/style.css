@@ -231,6 +231,20 @@ h4, h5, h6, .h4, .h5, .h6 {
 .blog-text {
     font-size: 1.15em;
 }
+.blog-title-text{
+    /*word-wrap: anywhere;*/
+    /*white-space: initial;*/
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    white-space: normal;
+}
+.blog-container p{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    white-space: normal;
+}
 
 @media (max-width: 576px) {
     .form-container {

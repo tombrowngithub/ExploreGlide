@@ -46,11 +46,11 @@ function RenderBlogPost(posts) {
     const time = date.toLocaleString()
     const blogPostContainer = document.getElementById("blog-post")
     blogPostContainer.innerHTML = `
-          <div class="col-lg-12 col-xl-12">
+          <div class=" blog-container">
                 <img class="img-fluid card-img-top" src="${post.imageUrl}" alt="">
                 <span><small>Published At: ${time}</small></span>
-                <h2 class="text-start text-dark">${post.title}</h2>
-                <p class="px-lg-5 px-0 blog-text">${post.article}</p>
+                <h3 class="text-start text-dark blog-title-text">${post.title}</h3>
+                <p class="text-start px-lg-5 px-0 blog-text blog-title-text">${post.article}</p>
            </div>
         `;
 
