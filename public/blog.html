@@ -27,7 +27,7 @@
 
     <!-- Template Stylesheet -->
     <link href="assets/css/style.css" rel="stylesheet">
-
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.0/classic/ckeditor.js"></script>
 
 </head>
 
@@ -106,9 +106,70 @@
         <div class="row justify-content-center" id="blog-post">
 
         </div>
+
+        <div class="container d-flex justify-content-evenly d-none" id="delete-edit-Btn">
+            <div class=" d-flex justify-content-center d-none" id="loading">
+                <img src="Spinner.gif" alt="loading" style="width: 70px">
+            </div>
+            <button class="btn btn-danger" id="deleteBtn">Delete Post</button>
+            <button class="btn btn-warning" id="editBtn">Edit Post</button>
+        </div>
     </div>
 </div>
 <!-- Blog End -->
+
+
+<!-- Edit blog Start -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Edit Post</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="container bg-light shadow-sm mx-auto">
+                <form id="edit-form">
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="updateCategory">Select category</label>
+                        <select class="form-control" id="updateCategory" >
+                            <option value="">Category</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Education">Education</option>
+                            <option value="Hotels">Hotels</option>
+                            <option value="LifeStyle">LifeStyle</option>
+                            <option value="Flight">Flight</option>
+                            <option value="Tours">Tours</option>
+                            <option value="Adventure">Adventure</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="updateTitle">Title</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="updateTitle"
+                                placeholder="Enter Title"
+                                aria-describedby="titleHelp" >
+                    </div>
+
+                    <div class="form-floating my-3">
+                        <textarea
+                                id="updateArticle"
+
+                                rows="12" style="width: 100%">
+                        </textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-primary" id="updateBtn">Update Post</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Edit blog End -->
 
 
 <!-- Footer Start -->
@@ -149,7 +210,8 @@
                     <h4 class="text-light mb-4">Explore Glide Link</h4>
                     <div class="d-flex flex-column align-items-start">
                         <a class="text-body mb-2" href="/"><i class="fa fa-check text-primary me-2"></i>Home</a>
-                        <a class="text-body mb-2" href="/about"><i class="fa fa-check text-primary me-2"></i>About Us</a>
+                        <a class="text-body mb-2" href="/about"><i class="fa fa-check text-primary me-2"></i>About
+                            Us</a>
                         <a class="text-body mb-2" href="/"><i class="fa fa-check text-primary me-2"></i>Our Features</a>
                         <a class="text-body mb-2" href="/"><i class="fa fa-check text-primary me-2"></i>Contact us</a>
                         <a class="text-body mb-2" href="/"><i class="fa fa-check text-primary me-2"></i>Our Blog</a>
