@@ -236,15 +236,14 @@ h4, h5, h6, .h4, .h5, .h6 {
     /*white-space: initial;*/
     overflow-wrap: break-word;
     word-wrap: break-word;
-    hyphens: auto;
     white-space: normal;
 }
-.blog-container p{
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    hyphens: auto;
-    white-space: normal;
-}
+/*.blog-container p{*/
+/*    overflow-wrap: break-word;*/
+/*    word-wrap: break-word;*/
+/*    hyphens: auto;*/
+/*    white-space: normal;*/
+/*}*/
 
 @media (max-width: 576px) {
     .form-container {

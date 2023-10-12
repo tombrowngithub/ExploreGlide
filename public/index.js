@@ -8,6 +8,13 @@ import {
     getDocs
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"; // Import Firestore modules
 
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+
 const firebaseConfig = {
     apiKey: "AIzaSyDc3SAP5mWBWR_r883cGqW92LSXYSqFRaM",
     authDomain: "exploreglide-50ee9.firebaseapp.com",
@@ -20,15 +27,36 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); // Initialize Firestore
+const auth = getAuth(app)
+
+const logout = document.getElementById('logout')
+const login = document.getElementById('login')
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        logout.style.setProperty('display', 'block', 'important')
+        login.style.setProperty('display', 'none', 'important')
+
+        logout.addEventListener('click', async () => {
+            await signOut(auth)
+            location.replace("/")
+        })
+    } else {
+        logout.style.setProperty('display', 'none', 'important')
+        login.style.setProperty('display', 'block', 'important')
+    }
+})
+
 
 // Define a function to format the date as "01 Jan 2045"
 function formatDate(date) {
     const options = {
         year: 'numeric',
         month: 'short',
-        day: '2-digit' };
+        day: '2-digit'
+    };
     return date.toLocaleDateString(undefined, options);
 }
+
 function renderPost(postDoc) {
     const post = postDoc.data();
     const postsContainer = document.getElementById("posts-container");
@@ -84,6 +112,39 @@ async function fetchAndRenderPosts() {
         renderPost(doc);
     });
 }
+
+
+const loginForm = document.getElementById('login-form')
+const email = document.getElementById('email')
+const password = document.getElementById('password')
+
+loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    try {
+        await signInWithEmailAndPassword(auth, email.value, password.value)
+        alert("Admin login successfully!")
+        location.href = "/"
+    } catch (error) {
+        if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+            // Display an error message to the user
+            alert("Invalid email or password")
+
+        } else if (error.code === 'auth/user-disabled') {
+            alert("Your account has been disabled")
+
+        } else if (error.code === 'auth/user-not-verified') {
+            alert("Your email address has not been verified. " +
+                "Please check your inbox and follow the verification link.")
+
+        } else {
+            // Handle other errors
+            console.error(error)
+            alert("Unknown error has occurred, try again later or contact admin")
+        }
+    }
+})
+
+
 // Add an event listener to call fetchAndRenderPosts when the page loads
 window.addEventListener("load", () => {
     const explore = document.getElementById('exploreglide')
