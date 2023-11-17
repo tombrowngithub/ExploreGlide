@@ -73,12 +73,16 @@ function RenderBlogPost(posts) {
            </div>
         `;
 
+    const pageTitle = document.querySelector('title')
+    pageTitle.textContent = post.title
+
+
 //logic of the shared-button
     const link = encodeURI(window.location.href)
     const msg = encodeURIComponent('Hey I found this article');
     const title = encodeURIComponent(post.title)
 
-    console.log([link, msg, title])
+    //console.log([link, msg, title])
 
     const facebook = document.querySelector('.facebook')
     facebook.href = `https://www.facebook.com/share.php?u=${link}`
