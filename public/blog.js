@@ -56,14 +56,53 @@ function RenderBlogPost(posts) {
     blogPostContainer.innerHTML = `
           <div class=" blog-container">
                 <img class="img-fluid card-img-top" src="${post.imageUrl}" alt="">
-                <span><small>Published At: ${time}</small></span>
+                <span><small>Published At: ${time}</small> 
+                            <span class="h6">Share this on:</span>
+                           <a class="facebook me-3  mt-3" target="_blank" style="font-size: 28px; color: blue; cursor: pointer;"><i
+                            class="fab fa-facebook"></i></a>
+                           <a class="twitter me-3 mt-3" target="_blank" style="font-size: 28px; color: #1DA1F2; cursor: pointer;"><i
+                            class="fab fa-twitter"></i></a>
+                           <a class="instagram me-3" target="_blank" style="font-size: 28px; color: #833AB4;cursor: pointer;"><i
+                           class="fab fa-instagram"></i></a>
+                         <a class="copyLink"  style="font-size: 28px;"><i class="fas fa-copy"></i></a>
+                </span> 
+               
                 <h4 class="text-start py-4 text-dark blog-title-text">${post.title}</h4>
                 <div class="p text-start px-lg-5 px-0 blog-text blog-title-text">${post.article}</div>
                 
            </div>
         `;
 
+//logic of the shared-button
+    const link = encodeURI(window.location.href)
+    const msg = encodeURIComponent('Hey I found this article');
+    const title = encodeURIComponent(post.title)
+
+    console.log([link, msg, title])
+
+    const facebook = document.querySelector('.facebook')
+    facebook.href = `https://www.facebook.com/share.php?u=${link}`
+
+    const twitter = document.querySelector('.twitter')
+    twitter.href = `http://twitter.com/share?url=${link}&text=${msg}&hashtags=''`
+
+    const instagram = document.querySelector('.instagram');
+    instagram.addEventListener('click', () => {
+        window.location.href = `instagram://library?LocalIdentifier=${link}&Caption=${msg}&Hashtags=${title}`;
+    });
+
+    const copyLink = document.querySelector('.copyLink')
+    copyLink.addEventListener('click', () => {
+        let dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = window.location.href;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        alert("Link copied!");
+    })
 }
+
 
 const DeleteEditBtn = document.getElementById('delete-edit-Btn')
 onAuthStateChanged(auth, (user) => {
